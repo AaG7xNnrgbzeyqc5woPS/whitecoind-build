@@ -1,0 +1,31 @@
+#!/bin/bash
+#1. firstboot create configure file for whitecoind
+#2. Download blockchain data with wget  for saving much times
+#2. then  run whitecoind as deamon
+#3. Container must mapper port 15815:15815 for whitecoind client connetion
+#4.
+# usage:
+# docker run \
+#  -itd \
+#  --restart=always \
+#  --privileged \
+#  --name xwc_0.4 \
+#  -p 127.0.0.1:15815:15815
+#  -P  \
+#  whitecoind:v0.4 \
+#  /root/scritp/start_whitcoind
+#
+
+/root/script/firstboot
+
+# use exec then whitecoind pid=1
+#exec whitecoind
+whitecoind
+
+# just keep this script running
+while [[ true ]]; do
+    sleep 1
+done
+
+
+

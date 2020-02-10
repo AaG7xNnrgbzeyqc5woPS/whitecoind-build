@@ -1,0 +1,24 @@
+#!/bin/bash
+# v0.1
+# password write to whitecoind.conf
+# by josn
+# date: 2020.2.2
+
+if [ ! -f /etc/firstboot ]; then
+
+        src=~/script/whitecoin.conf
+        dest=~/.whitecoin-xwc/whitecoin.conf
+
+        mkdir -p $(dirname ${dest})
+        cp -f  ${src}   ${dest}
+
+        rpcu=$(pwgen -ncsB 35 1)
+        rpcp=$(pwgen -ncsB 75 1)
+
+        echo "rpcuser=$rpcu
+rpcpassword=$rpcp" >> ${dest}
+
+
+        sudo touch /etc/firstboot
+fi
+

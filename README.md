@@ -18,3 +18,17 @@ docker run \
 
 # run whitecoin client
 docker exec -it xwc_0.4 /bin/bash
+
+
+# 在服务器上运行主节点
+docker run \
+  -itd \
+  --restart=always \
+  --privileged \
+  --name whitecoind \
+  -P \
+  -p 15814:15814 \
+  -v /root/.whitecoin-xwc:/root/.whitecoin-xwc \
+  whitecoind:v0.5
+
+docker exec -it whitecoind /bin/bash

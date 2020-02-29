@@ -15,7 +15,9 @@ RUN   apt update && \
                      libssl-dev  \
                      libdb++-dev  \
                      libboost-all-dev \
-                     libqrencode-dev  && \
+                     libqrencode-dev \
+                     miniupnpc \
+                     libminiupnpc-dev && \
       apt autoremove -y
 
 RUN   git clone https://github.com/peterli360/whitecoin-1.git  whitecoin && \

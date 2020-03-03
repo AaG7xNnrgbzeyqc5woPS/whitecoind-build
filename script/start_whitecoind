@@ -24,7 +24,7 @@ whitecoind
 
 # just keep this script running
 while [[ true ]]; do
-    sleep 1
+    sleep 10
 done
 
 

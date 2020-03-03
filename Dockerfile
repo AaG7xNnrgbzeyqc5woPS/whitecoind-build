@@ -37,9 +37,15 @@ RUN   cd /root/whitecoin && \
 
 COPY  ./script/ ./script/
 
-WORKDIR /root/script
+# Add Tini
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
 
-CMD ["/bin/bash", "-c", "./start_whitecoind"]
+# Run your program under Tini
+CMD ["/bin/bash", "-c", "./script/start_whitecoind"]
+# or docker run your-image /your/program ...
 
 EXPOSE 15814 15815
 
